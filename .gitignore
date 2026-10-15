@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+data/credora.db
+data/credora.db-journal
+.env
+*.zip
+documentation/report.md
+documentation/*.tmp
+documentation/.~lock*
+.~lock*
+*.tmp
