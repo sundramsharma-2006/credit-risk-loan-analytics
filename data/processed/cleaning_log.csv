@@ -1,0 +1,2 @@
+table,issue,rows,action,ids
+customers,e-mail shared by two different customers (violates UNIQUE),2,"kept first customer's e-mail, set later one to NULL","CUST104628,CUST104915"

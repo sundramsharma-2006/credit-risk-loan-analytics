@@ -1,0 +1,16 @@
+family,params,oof_auc
+Logistic Regression,C=0.003,0.6628579352156156
+Logistic Regression,C=0.01,0.6613360154300807
+Logistic Regression,C=0.03,0.6601756779789135
+Logistic Regression,C=0.1,0.6595285852260636
+Logistic Regression,C=1.0,0.6586212591153895
+Random Forest,"depth=6, leaf=10",0.6607977344050165
+Random Forest,"depth=6, leaf=25",0.6611265769274842
+Random Forest,"depth=8, leaf=10",0.6613605702890059
+Random Forest,"depth=8, leaf=25",0.661014876392766
+Random Forest,"depth=10, leaf=10",0.6583687292427185
+Random Forest,"depth=10, leaf=25",0.6601780853180239
+Gradient Boosting (XGBoost stand-in),"n=100, depth=2",0.6589614161316757
+Gradient Boosting (XGBoost stand-in),"n=100, depth=3",0.6603663392364497
+Gradient Boosting (XGBoost stand-in),"n=200, depth=2",0.6579652592078314
+Gradient Boosting (XGBoost stand-in),"n=200, depth=3",0.6537220832920073

@@ -1,0 +1,32 @@
+{
+ "method": "customer score = max calibrated P(default) over the customer's applications (application-level default model); customers who never applied use a profile-only model",
+ "auc_application_based_vs_ever_default_cross_fitted": 0.7158461282576379,
+ "auc_final_score_vs_ever_default": 0.6640838591640071,
+ "profile_model": {
+  "family": "Logistic Regression",
+  "params": "C=0.003",
+  "oof_auc": 0.6628579352156156
+ },
+ "n_labelled_customers": 2309,
+ "n_scored": 5000,
+ "cuts": [
+  33,
+  66
+ ],
+ "band_counts": {
+  "Low Risk": 2201,
+  "Medium Risk": 1811,
+  "High Risk": 988
+ },
+ "band_default_rates": {
+  "Low Risk": 0.222,
+  "Medium Risk": 0.399,
+  "High Risk": 0.507
+ },
+ "scored_how": {
+  "application-based (max P over applications)": 3904,
+  "profile-only model (never applied)": 1096
+ },
+ "mean_probability": 0.41822976,
+ "observed_ever_default_rate": 0.3170203551320918
+}

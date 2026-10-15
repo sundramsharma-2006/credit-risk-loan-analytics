@@ -1,0 +1,103 @@
+{
+ "disbursed_default_rate_pct": 23.4,
+ "approval_rate_decided_pct": 46.4,
+ "default_rate_by_loan_type_pct": {
+  "Personal": 20.3,
+  "Auto": 21.3,
+  "Gold": 23.3,
+  "Education": 27.4,
+  "Business": 29.7,
+  "Home": 31.6
+ },
+ "approval_rate_by_loan_type_pct": {
+  "Home": 26.0,
+  "Business": 27.9,
+  "Education": 46.2,
+  "Auto": 48.7,
+  "Personal": 55.8,
+  "Gold": 63.5
+ },
+ "default_rate_by_score_band_pct": {
+  "<580": 39.9,
+  "580-649": 34.8,
+  "650-699": 24.4,
+  "700-749": 16.8,
+  "750+": 11.5
+ },
+ "default_rate_by_dti_band_pct": {
+  "<0.3": 9.1,
+  "0.3-0.5": 13.9,
+  "0.5-0.8": 17.6,
+  "0.8-1.2": 24.8,
+  ">1.2": 41.7
+ },
+ "dti_band_counts": {
+  "<0.3": 363,
+  "0.3-0.5": 700,
+  "0.5-0.8": 829,
+  "0.8-1.2": 645,
+  ">1.2": 866
+ },
+ "default_rate_by_employment_pct": {
+  "Salaried": 20.8,
+  "Business Owner": 23.7,
+  "Self-Employed": 28.8,
+  "Retired": 28.8,
+  "Unemployed": 45.8
+ },
+ "employment_counts": {
+  "Salaried": 2041,
+  "Business Owner": 477,
+  "Self-Employed": 698,
+  "Retired": 163,
+  "Unemployed": 24
+ },
+ "applications_per_month_min_max": [
+  265,
+  357
+ ],
+ "approval_rate_monthly_range_pct": [
+  39.7,
+  51.0
+ ],
+ "states": 13,
+ "approval_rate_state_range_pct": [
+  40.9,
+  49.3
+ ],
+ "default_rate_state_range_pct": [
+  18.0,
+  27.8
+ ],
+ "default_rate_by_utilization_pct": {
+  "<30%": 20.6,
+  "30-50%": 24.0,
+  "50-70%": 28.9,
+  "70-90%": 36.8,
+  ">90%": 16.7
+ },
+ "default_rate_by_late30_pct": {
+  "0": 19.0,
+  "1": 22.1,
+  "2": 31.4,
+  "3": 40.7,
+  "4": 39.7
+ },
+ "top_corr_with_default": {
+  "debt_to_income_ratio": 0.286,
+  "credit_score": -0.222,
+  "loan_to_income": 0.175,
+  "annual_income": -0.174,
+  "avg_balance": -0.155,
+  "num_late_payments_30d": 0.154
+ },
+ "ever_approved_by_kyc_pct": {
+  "Pending": 45.1,
+  "Verified": 46.6
+ },
+ "customers_without_application": 1096,
+ "median_dti_disbursed": 0.71,
+ "median_dti_not_disbursed": 2.39,
+ "multi_loan_customer_rows_pct": 55.9,
+ "n_charts": 24
+}

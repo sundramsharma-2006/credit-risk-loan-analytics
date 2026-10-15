@@ -1,0 +1,101 @@
+{
+ "backend": "mini_sklearn (NumPy fallback, scikit-learn API subset)",
+ "champion": "Logistic Regression",
+ "params": "C=0.003",
+ "n_disbursed": 3403,
+ "n_train": 2722,
+ "n_test": 681,
+ "default_rate": 0.2342051131354687,
+ "n_features": 55,
+ "cv_auc": 0.7374045350190623,
+ "test_default_threshold": {
+  "Accuracy": 0.7767988252569751,
+  "Precision": 0.5490196078431373,
+  "Recall": 0.17834394904458598,
+  "F1": 0.2692307692307692,
+  "ROC_AUC": 0.7306364564593766,
+  "PR_AUC": 0.4475128457079887,
+  "TN": 501,
+  "FP": 23,
+  "FN": 129,
+  "TP": 28
+ },
+ "threshold_f1": 0.2433,
+ "test_at_f1_threshold": {
+  "Accuracy": 0.671071953010279,
+  "Precision": 0.3665338645418327,
+  "Recall": 0.5859872611464968,
+  "F1": 0.45098039215686275,
+  "ROC_AUC": 0.7306364564593766,
+  "PR_AUC": 0.4475128457079887,
+  "TN": 365,
+  "FP": 159,
+  "FN": 65,
+  "TP": 92
+ },
+ "threshold_recall70": 0.224,
+ "test_at_recall70_threshold": {
+  "Accuracy": 0.6519823788546255,
+  "Precision": 0.36013986013986016,
+  "Recall": 0.6560509554140127,
+  "F1": 0.4650112866817156,
+  "ROC_AUC": 0.7306364564593766,
+  "PR_AUC": 0.4475128457079887,
+  "TN": 341,
+  "FP": 183,
+  "FN": 54,
+  "TP": 103
+ },
+ "diagnostics": {
+  "naive_random_split_auc": 0.7548739120462583,
+  "test_auc_by_application_year": {
+   "2022": 0.7673038892551087,
+   "2023": 0.7132731958762888,
+   "2024": 0.7463636363636363
+  },
+  "test_rows_by_application_year": {
+   "2022": 160,
+   "2023": 371,
+   "2024": 150
+  },
+  "test_auc_without_bureau_features": 0.7018767929206983,
+  "test_auc_without_bureau_and_transaction_features": 0.7061554918072641,
+  "test_auc_application_features_only": 0.7084285505907522,
+  "single_feature_auc": {
+   "debt_to_income_ratio": 0.6952824913696698,
+   "credit_score": 0.661381095930374,
+   "loan_to_income": 0.6851448923032042,
+   "annual_income": 0.6182659114114843
+  },
+  "test_auc_95ci_customer_bootstrap": [
+   0.6907015912658332,
+   0.7730434447941298
+  ],
+  "test_defaults": 157
+ },
+ "targets": {
+  "roc_auc_ge_0_80": false,
+  "recall_ge_0_70": false
+ },
+ "top_features": {
+  "debt_to_income_ratio": 0.0506,
+  "credit_score": 0.0098,
+  "num_late_payments_30d": 0.0065,
+  "requested_amount": 0.0064,
+  "loan_type_Auto": 0.0038,
+  "loan_to_income": 0.0038,
+  "education_Post Graduate": 0.0035,
+  "num_open_accounts": 0.0029,
+  "loan_type_Education": 0.0025,
+  "employment_type_Salaried": 0.0023
+ },
+ "calibration": {
+  "platt": [
+   1.1665176068672465,
+   -1.1597909425274542
+  ],
+  "mean_calibrated_oof": 0.23512123443004831,
+  "actual_rate": 0.23512123438648053
+ },
+ "seconds": 84.2
+}

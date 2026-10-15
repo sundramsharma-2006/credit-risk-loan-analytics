@@ -1,0 +1,24 @@
+check,passed,detail
+customers.customer_id is unique,True,
+credit_history.credit_id is unique,True,
+loan_applications.application_id is unique,True,
+transactions.transaction_id is unique,True,
+credit_history: exactly one row per customer,True,
+no orphan foreign keys in credit_history,True,orphans=0
+no orphan foreign keys in loan_applications,True,orphans=0
+no orphan foreign keys in transactions,True,orphans=0
+credit_score between 300 and 900,True,
+credit_utilization_ratio between 0 and 1,True,
+approval_status in allowed set,True,
+"loan_default in {0,1} or NULL",True,
+decision_date >= application_date,True,
+customers.email is unique (schema has UNIQUE),True,duplicate emails=0
+loan_default present exactly for disbursed loans,True,
+only approved loans are disbursed,True,
+approved_amount <= requested_amount,True,
+"transaction type in {Credit, Debit}",True,
+no negative amounts,True,
+kyc_status in allowed set,True,
+no missing values outside decision_date/loan_default/email,True,
+INFO applications dated before customer_since,True,935 of 7500 - kept; documented in data_dictionary.md
+INFO bureau snapshot date is after most applications,True,"as_of_date=['2024-06-30'], applications 2022-07-01..2024-06-29 - temporal-leakage risk, see model card"
