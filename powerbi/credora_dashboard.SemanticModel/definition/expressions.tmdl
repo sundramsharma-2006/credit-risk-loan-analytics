@@ -1,0 +1,1 @@
+expression DataPath = "C:\Users\hp\OneDrive\Desktop\internship\credit-risk-loan-analytics\powerbi\data" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

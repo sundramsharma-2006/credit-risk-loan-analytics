@@ -1,0 +1,42 @@
+table dim_date
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		formatString: Long Date
+		isKey
+		summarizeBy: none
+		sourceColumn: Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: Year
+
+	column MonthNo
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: MonthNo
+
+	column MonthStart
+		dataType: dateTime
+		formatString: Long Date
+		summarizeBy: none
+		sourceColumn: MonthStart
+
+	column YearMonth
+		dataType: string
+		summarizeBy: none
+		sourceColumn: YearMonth
+
+	partition dim_date = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataPath & "\dim_date.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"Date", type date}, {"Year", Int64.Type}, {"MonthNo", Int64.Type}, {"MonthStart", type date}, {"YearMonth", type text}}, "en-US")
+				in
+					Typed

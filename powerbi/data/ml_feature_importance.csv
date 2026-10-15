@@ -1,0 +1,16 @@
+feature,auc_drop_when_shuffled,abs_coef_standardised
+debt_to_income_ratio,0.05063,0.30502
+credit_score,0.00981,0.16471
+num_late_payments_30d,0.00646,0.09894
+requested_amount,0.00644,0.07804
+loan_type_Auto,0.00378,0.03934
+loan_to_income,0.00378,0.0663
+education_Post Graduate,0.0035,0.04464
+num_open_accounts,0.00291,0.04672
+loan_type_Education,0.00251,0.03524
+employment_type_Salaried,0.00228,0.08224
+late_payments_total,0.00172,0.07885
+credit_utilization_ratio,0.00147,0.03255
+total_outstanding_debt,0.00114,0.0438
+residence_type_Family Owned,0.00092,0.02065
+total_inflow,0.0009,0.02689

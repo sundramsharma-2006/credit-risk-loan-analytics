@@ -1,0 +1,44 @@
+{
+  "name": "Credora Risk",
+  "dataColors": [
+    "#0B5FA5",
+    "#2D3A4A",
+    "#8FB8DE",
+    "#C23B3B",
+    "#E0A526",
+    "#2E9E5B",
+    "#6B7A8F",
+    "#D9E6F2"
+  ],
+  "background": "#FFFFFF",
+  "foreground": "#2D3A4A",
+  "tableAccent": "#0B5FA5",
+  "good": "#2E9E5B",
+  "neutral": "#E0A526",
+  "bad": "#C23B3B",
+  "maximum": "#0B5FA5",
+  "center": "#8FB8DE",
+  "minimum": "#D9E6F2",
+  "textClasses": {
+    "callout": {
+      "fontSize": 28,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#0B5FA5"
+    },
+    "title": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#2D3A4A"
+    },
+    "header": {
+      "fontSize": 12,
+      "fontFace": "Segoe UI Semibold",
+      "color": "#2D3A4A"
+    },
+    "label": {
+      "fontSize": 10,
+      "fontFace": "Segoe UI",
+      "color": "#2D3A4A"
+    }
+  }
+}

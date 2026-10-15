@@ -1,0 +1,46 @@
+table ml_model_comparison
+
+	column Model
+		dataType: string
+		summarizeBy: none
+		sourceColumn: Model
+
+	column CV_AUC
+		dataType: double
+		summarizeBy: none
+		sourceColumn: CV_AUC
+
+	column Accuracy
+		dataType: double
+		summarizeBy: none
+		sourceColumn: Accuracy
+
+	column Precision
+		dataType: double
+		summarizeBy: none
+		sourceColumn: Precision
+
+	column Recall
+		dataType: double
+		summarizeBy: none
+		sourceColumn: Recall
+
+	column F1
+		dataType: double
+		summarizeBy: none
+		sourceColumn: F1
+
+	column ROC_AUC
+		dataType: double
+		summarizeBy: none
+		sourceColumn: ROC_AUC
+
+	partition ml_model_comparison = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataPath & "\ml_model_comparison.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"Model", type text}, {"CV_AUC", type number}, {"Accuracy", type number}, {"Precision", type number}, {"Recall", type number}, {"F1", type number}, {"ROC_AUC", type number}}, "en-US")
+				in
+					Typed

@@ -1,0 +1,183 @@
+table fact_loans
+
+	column application_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: application_id
+
+	column customer_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column application_date
+		dataType: dateTime
+		formatString: Long Date
+		summarizeBy: none
+		sourceColumn: application_date
+
+	column loan_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: loan_type
+
+	column loan_purpose
+		dataType: string
+		summarizeBy: none
+		sourceColumn: loan_purpose
+
+	column requested_amount
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: requested_amount
+
+	column loan_term_months
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: loan_term_months
+
+	column interest_rate
+		dataType: double
+		summarizeBy: none
+		sourceColumn: interest_rate
+
+	column applicant_monthly_income
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: applicant_monthly_income
+
+	column existing_emi
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: existing_emi
+
+	column debt_to_income_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: debt_to_income_ratio
+
+	column collateral_flag
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: collateral_flag
+
+	column approval_status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: approval_status
+
+	column approved_amount
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: approved_amount
+
+	column decision_date
+		dataType: dateTime
+		formatString: Long Date
+		summarizeBy: none
+		sourceColumn: decision_date
+
+	column disbursed_flag
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: disbursed_flag
+
+	column loan_default
+		dataType: double
+		summarizeBy: none
+		sourceColumn: loan_default
+
+	column model_default_probability
+		dataType: double
+		summarizeBy: none
+		sourceColumn: model_default_probability
+
+	column application_month
+		dataType: dateTime
+		formatString: Long Date
+		summarizeBy: none
+		sourceColumn: application_month
+
+	column IsApproved
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: IsApproved
+
+	column IsRejected
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: IsRejected
+
+	column IsUnderReview
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: IsUnderReview
+
+	column approved_amount_crore
+		dataType: double
+		summarizeBy: none
+		sourceColumn: approved_amount_crore
+
+	measure 'Applications' = COUNTROWS ( fact_loans )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Approved' = SUM ( fact_loans[IsApproved] )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Rejected' = SUM ( fact_loans[IsRejected] )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Approval Rate' = DIVIDE ( [Approved], [Approved] + [Rejected] )
+		formatString: 0.0%
+		displayFolder: KPIs
+
+	measure 'Disbursed Loans' = CALCULATE ( COUNTROWS ( fact_loans ), fact_loans[disbursed_flag] = 1 )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Defaults' = CALCULATE ( COUNTROWS ( fact_loans ), fact_loans[loan_default] = 1 )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Default Rate' = DIVIDE ( [Defaults], [Disbursed Loans] )
+		formatString: 0.0%
+		displayFolder: KPIs
+
+	measure 'Disbursed Value (Cr)' = SUM ( fact_loans[approved_amount_crore] )
+		formatString: #,0.0
+		displayFolder: KPIs
+
+	measure 'Avg Requested Amount' = AVERAGE ( fact_loans[requested_amount] )
+		formatString: #,0
+		displayFolder: KPIs
+
+	measure 'Avg Applicant Credit Score' = AVERAGEX ( fact_loans, RELATED ( dim_customer[credit_score] ) )
+		formatString: 0
+		displayFolder: Credit
+
+	measure 'Avg Model Default Probability' = AVERAGE ( fact_loans[model_default_probability] )
+		formatString: 0.0%
+		displayFolder: Model
+
+	partition fact_loans = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataPath & "\fact_loans.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"application_id", type text}, {"customer_id", type text}, {"application_date", type date}, {"loan_type", type text}, {"loan_purpose", type text}, {"requested_amount", Int64.Type}, {"loan_term_months", Int64.Type}, {"interest_rate", type number}, {"applicant_monthly_income", Int64.Type}, {"existing_emi", Int64.Type}, {"debt_to_income_ratio", type number}, {"collateral_flag", Int64.Type}, {"approval_status", type text}, {"approved_amount", Int64.Type}, {"decision_date", type date}, {"disbursed_flag", Int64.Type}, {"loan_default", type number}, {"model_default_probability", type number}, {"application_month", type date}, {"IsApproved", Int64.Type}, {"IsRejected", Int64.Type}, {"IsUnderReview", Int64.Type}, {"approved_amount_crore", type number}}, "en-US")
+				in
+					Typed

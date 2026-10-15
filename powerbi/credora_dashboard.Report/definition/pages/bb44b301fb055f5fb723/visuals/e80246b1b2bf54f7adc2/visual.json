@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "e80246b1b2bf54f7adc2",
+  "position": {
+    "x": 20,
+    "y": 70,
+    "z": 5000,
+    "height": 230,
+    "width": 1240,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "Model"
+                }
+              },
+              "queryRef": "ml_model_comparison.Model",
+              "nativeQueryRef": "Model"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "CV_AUC"
+                }
+              },
+              "queryRef": "ml_model_comparison.CV_AUC",
+              "nativeQueryRef": "CV_AUC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "ROC_AUC"
+                }
+              },
+              "queryRef": "ml_model_comparison.ROC_AUC",
+              "nativeQueryRef": "ROC_AUC"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "Precision"
+                }
+              },
+              "queryRef": "ml_model_comparison.Precision",
+              "nativeQueryRef": "Precision"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "Recall"
+                }
+              },
+              "queryRef": "ml_model_comparison.Recall",
+              "nativeQueryRef": "Recall"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ml_model_comparison"
+                    }
+                  },
+                  "Property": "F1"
+                }
+              },
+              "queryRef": "ml_model_comparison.F1",
+              "nativeQueryRef": "F1"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Model comparison (held-out customers)'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

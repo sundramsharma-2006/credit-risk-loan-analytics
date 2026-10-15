@@ -1,0 +1,7 @@
+relationship rel_loans_date
+	fromColumn: fact_loans.application_date
+	toColumn: dim_date.Date
+
+relationship rel_loans_customer
+	fromColumn: fact_loans.customer_id
+	toColumn: dim_customer.customer_id

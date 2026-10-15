@@ -1,0 +1,53 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.0.0/schema.json",
+  "name": "0f523ae4942c56fdb876",
+  "position": {
+    "x": 635,
+    "y": 70,
+    "z": 4003,
+    "height": 88,
+    "width": 195,
+    "tabOrder": 4003
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "fact_loans"
+                    }
+                  },
+                  "Property": "Disbursed Value (Cr)"
+                }
+              },
+              "queryRef": "fact_loans.Disbursed Value (Cr)",
+              "nativeQueryRef": "Disbursed Value (Cr)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

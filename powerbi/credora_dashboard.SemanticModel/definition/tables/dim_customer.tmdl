@@ -1,0 +1,128 @@
+table dim_customer
+
+	column customer_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: customer_id
+
+	column age
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: age
+
+	column employment_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: employment_type
+
+	column education
+		dataType: string
+		summarizeBy: none
+		sourceColumn: education
+
+	column residence_type
+		dataType: string
+		summarizeBy: none
+		sourceColumn: residence_type
+
+	column annual_income
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: annual_income
+
+	column city
+		dataType: string
+		summarizeBy: none
+		sourceColumn: city
+
+	column state
+		dataType: string
+		summarizeBy: none
+		sourceColumn: state
+
+	column kyc_status
+		dataType: string
+		summarizeBy: none
+		sourceColumn: kyc_status
+
+	column credit_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: credit_score
+
+	column credit_utilization_ratio
+		dataType: double
+		summarizeBy: none
+		sourceColumn: credit_utilization_ratio
+
+	column num_late_payments_30d
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: num_late_payments_30d
+
+	column num_defaults_prior
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: num_defaults_prior
+
+	column credit_band
+		dataType: string
+		summarizeBy: none
+		sourceColumn: credit_band
+
+	column default_probability
+		dataType: double
+		summarizeBy: none
+		sourceColumn: default_probability
+
+	column risk_score
+		dataType: int64
+		formatString: 0
+		summarizeBy: none
+		sourceColumn: risk_score
+
+	column risk_category
+		dataType: string
+		summarizeBy: none
+		sourceColumn: risk_category
+
+	column scored_how
+		dataType: string
+		summarizeBy: none
+		sourceColumn: scored_how
+
+	column top_risk_factors
+		dataType: string
+		summarizeBy: none
+		sourceColumn: top_risk_factors
+
+	measure 'Customers' = COUNTROWS ( dim_customer )
+		formatString: #,0
+		displayFolder: Risk
+
+	measure 'High Risk Customers' = CALCULATE ( COUNTROWS ( dim_customer ), dim_customer[risk_category] = "High Risk" )
+		formatString: #,0
+		displayFolder: Risk
+
+	measure 'Avg Risk Score' = AVERAGE ( dim_customer[risk_score] )
+		formatString: 0.0
+		displayFolder: Risk
+
+	measure 'Avg Credit Score' = AVERAGE ( dim_customer[credit_score] )
+		formatString: 0
+		displayFolder: Credit
+
+	partition dim_customer = m
+		mode: import
+		source =
+				let
+					Source = Csv.Document(File.Contents(DataPath & "\dim_customer.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+					Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+					Typed = Table.TransformColumnTypes(Promoted, {{"customer_id", type text}, {"age", Int64.Type}, {"employment_type", type text}, {"education", type text}, {"residence_type", type text}, {"annual_income", Int64.Type}, {"city", type text}, {"state", type text}, {"kyc_status", type text}, {"credit_score", Int64.Type}, {"credit_utilization_ratio", type number}, {"num_late_payments_30d", Int64.Type}, {"num_defaults_prior", Int64.Type}, {"credit_band", type text}, {"default_probability", type number}, {"risk_score", Int64.Type}, {"risk_category", type text}, {"scored_how", type text}, {"top_risk_factors", type text}}, "en-US")
+				in
+					Typed
